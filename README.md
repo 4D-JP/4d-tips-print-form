@@ -6,14 +6,14 @@
 
 シンプル系
 
-* PRINT LABEL
-* PRINT RECORD
-* PRINT SELECTION
+* [PRINT LABEL](http://doc.4d.com/4dv15r/help/command/ja/page39.html)
+* [PRINT RECORD](http://doc.4d.com/4dv15r/help/command/ja/page71.html)
+* [PRINT SELECTION](http://doc.4d.com/4dv15r/help/command/ja/page60.html)
 
 自由系
 
-* Print form
-* Print object
+* [Print form](http://doc.4d.com/4dv15r/help/command/ja/page5.html)
+* [Print object](http://doc.4d.com/4dv15r/help/command/ja/page1095.html)
 
 並び替えとブレークレベルを上手に組み合わせれば，PRINT SELECTIONでも複雑なレポートを印刷することができますが，ヘッダー・フッターの内容を制御したい場合，あるいは途中で改ページを強制したい場合には，Print formのほうが便利かもしれません。
 
