@@ -16,6 +16,10 @@
 
 並び替えとブレークレベルを上手に組み合わせれば，PRINT SELECTIONでも複雑なレポートを印刷することができますが，ヘッダー・フッターの内容を制御したい場合，あるいは途中で改ページを強制したい場合には，Print formのほうが便利かもしれません。
 
+###Print formでセレクションを印刷する
+
+[sample.pdf](https://github.com/4D-JP/4d-tips-print-form/blob/master/sample.pdf)
+
 ```
 ALL RECORDS([製品])
 ORDER BY([製品];[製品]製品ID;>)
@@ -57,4 +61,4 @@ End for
 CLOSE PRINTING JOB
 ```
 
-[sample.pdf](https://github.com/4D-JP/4d-tips-print-form/blob/master/sample.pdf)
+
