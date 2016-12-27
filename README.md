@@ -20,6 +20,20 @@
 
 [sample.pdf](https://github.com/4D-JP/4d-tips-print-form/blob/master/sample.pdf)
 
+ポイント
+
+改ページのタイミングを決定するため，余白関連のコマンドを活用する
+
+* [GET PRINTABLE MARGIN](http://doc.4d.com/4dv15r/help/command/ja/page711.html)
+* [GET PRINTABLE AREA](http://doc.4d.com/4dv15r/help/command/ja/page703.html)
+* [Get printed height](http://doc.4d.com/4dv15r/help/command/ja/page702.html)
+
+用紙を制御するためにプリントジョブ関連のコマンドを活用する
+
+* [PAGE BREAK](http://doc.4d.com/4dv15r/help/command/ja/page6.html)
+* [OPEN PRINTING JOB](http://doc.4d.com/4dv15r/help/command/ja/page995.html)
+* [CLOSE PRINTING JOB](http://doc.4d.com/4dv15r/help/command/ja/page996.html)
+
 ```
 ALL RECORDS([製品])
 ORDER BY([製品];[製品]製品ID;>)
@@ -34,31 +48,29 @@ OPEN PRINTING JOB
 
 For ($i;1;Records in selection([製品]))
 
-If ($i#1)
-PAGE BREAK(>)
-End if 
+  If ($i#1)
+    PAGE BREAK(>)
+  End if 
 
-$height:=Print form([製品];"帳票";Form header)
-$height:=Print form([製品];"帳票";Form detail)
+  $height:=Print form([製品];"帳票";Form header)
+  $height:=Print form([製品];"帳票";Form detail)
 
-RELATE MANY([製品]ID)
-ORDER BY([パーツ];[パーツ]パーツID;>)
+  RELATE MANY([製品]ID)
+  ORDER BY([パーツ];[パーツ]パーツID;>)
 
-For ($j;1;Records in selection([パーツ]))
-If ($j=1)
-$height:=Print form([パーツ];"帳票";Form header)
-Else 
-If (Get printed height>($printableHeight-$height-$bottom))
-PAGE BREAK(>)
-End if 
-End if 
-$height:=Print form([パーツ];"帳票";Form detail)
-NEXT RECORD([パーツ])
-End for 
-NEXT RECORD([製品])
+  For ($j;1;Records in selection([パーツ]))
+    If ($j=1)
+      $height:=Print form([パーツ];"帳票";Form header)
+    Else 
+      If (Get printed height>($printableHeight-$height-$bottom))
+        PAGE BREAK(>)
+      End if 
+    End if 
+    $height:=Print form([パーツ];"帳票";Form detail)
+    NEXT RECORD([パーツ])
+  End for 
+  NEXT RECORD([製品])
 End for 
 
 CLOSE PRINTING JOB
 ```
-
-
