@@ -56,3 +56,5 @@ End for
 
 CLOSE PRINTING JOB
 ```
+
+[sample.pdf](https://github.com/4D-JP/4d-tips-print-form/blob/master/sample.pdf)
